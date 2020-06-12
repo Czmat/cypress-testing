@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cypress Testing</title>
+  </head>
+  <body>
+    <h1>This about page</h1>
+    <p>It's great!</p>
+    <button>Load a Morty</button>
+    <div class="loaded-data"></div>
+    <p>Go back to the <a href="./index.html">home page</a>.</p>
+
+    <script>
+      function loadCharacter() {
+        fetch('https://rickandmortyapi.com/api/character/2')
+          .then((res) => res.json())
+          .then((response) => {
+            const name = document.createElement('h2');
+            name.innerText = response.name;
+
+            const img = document.createElement('img');
+            img.src = response.image;
+            img.alt = response.name;
+
+            const container = document.querySelector('.loaded-data');
+            container.appendChild(name);
+            container.appendChild(img);
+          })
+          .catch((err) => console.error(err));
+      }
+
+      document.querySelector('button').addEventListener('click', loadCharacter);
+    </script>
+  </body>
+</html>
