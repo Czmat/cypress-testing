@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 it('loads the home page', () => {
-  cy.visit('public/index.html');
+  cy.visit('/');
 
   cy.contains('This page');
 
